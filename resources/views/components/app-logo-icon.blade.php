@@ -1,0 +1,1 @@
+<img src="{{ asset('img/logo.png') }}" alt="Logo de Vida Saludable" class="w-full h-full object-contain" {{ $attributes }}>
