@@ -50,7 +50,7 @@
                 </label>
                 <input type="text" id="name" name="name"
                     class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-white placeholder-zinc-500"
-                    placeholder="Ej: Medicamentos, Suplementos, Cuidado Personal" required data-flux-control>
+                    placeholder="Ej: Limpieza del Hogar ,Electrodomésticos Empotrables ,Accesorios y Repuestos" required data-flux-control>
                 @error('name')
                     <p class="mt-1 text-sm text-red-500 font-medium" data-flux-component="error">{{ $message }}</p>
                 @enderror
