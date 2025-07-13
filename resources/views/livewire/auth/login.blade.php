@@ -100,7 +100,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
                 required
                 autofocus
                 autocomplete="email"
-                placeholder="cliente@tecnogar.com"
+                placeholder="Administrador@tecnogar.com"
             />
 
             <!-- CONTRASEÑA -->
@@ -111,7 +111,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
                     type="password"
                     required
                     autocomplete="current-password"
-                    placeholder="••••••••"
+                    placeholder="•••••••••••"
                     viewable
                 />
 
