@@ -71,7 +71,7 @@
             <p class="subtitle mb-8">
                 En TECNOGAR te ofrecemos una experiencia moderna y confiable en la compra de electrodomésticos. Contamos con una gran variedad de productos de calidad para el hogar y la oficina: cocinas, refrigeradoras, televisores, lavadoras, microondas, licuadoras, ventiladores y mucho más.
             </p>
-            <a href="{{ route('login') }}" class="button-primary inline-block">Ingresar al Sistema</a>
+            <a href="{{ route('login') }}" class="button-primary inline-block">Ingresar</a>
         </div>
     </section>
 
