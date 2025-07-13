@@ -82,8 +82,8 @@ class DatabaseSeeder extends Seeder
         //Creacion de usuarios
         User::factory()->create([
             'name' => 'Brayan Ttito Mariscal',
-            'email' => '60021891@lasalleurubamba.edu.pe',
-            'password' => bcrypt('ttito2006')
+            'email' => 'ttitomariscalbrayan@gmail.com',
+            'password' => bcrypt('123456789')
         ])->assignRole('Administrador');
     }
 }
