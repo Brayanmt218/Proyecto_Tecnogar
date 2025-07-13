@@ -58,7 +58,14 @@ Route::prefix('admin')->group(function () {
     Route::get('venta/export-excel', [VentaController::class, 'exportExcel'])->name('admin.venta.export-excel')->middleware('can:admin.venta.index');
 
     Route::resource('venta_detalle', Venta_detalleController::class)->only(['index'])->names('admin.venta_detalle')->middleware('can:admin.venta_detalle.index');
+    
 
+    Route::get('venta_detalle/export-pdf', [Venta_detalleController::class, 'exportPdf'])
+        ->name('admin.venta_detalle.export-pdf')
+        ->middleware('can:admin.venta_detalle.export-pdf');
+    Route::get('venta/{sale}/imprimir-boleta', [Venta_detalleController::class, 'generateBoletaPrint'])
+        ->name('admin.venta.imprimir_boleta')
+        ->middleware('can:admin.venta.imprimir_boleta');
    // Ruta para consultar DNI
     Route::get('cliente/consultar-dni', [ClienteController::class, 'consultarDni'])->name('admin.cliente.consultar-dni')->middleware('can:admin.cliente.consultar-dni');
     // Ruta para consultar RUC

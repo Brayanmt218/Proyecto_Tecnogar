@@ -107,7 +107,7 @@ class VentaController extends Controller
 
                 if (!$product) {
                     throw ValidationException::withMessages([
-                        'products' => "Producto con código {$item['nro_serie']} no encontrado o no está activo.",
+                        'products' => "Producto con Serie {$item['nro_serie']} no encontrado o no está activo.",
                     ]);
                 }
 
@@ -170,11 +170,11 @@ class VentaController extends Controller
         }
     }
     public function exportPdf()
-{
-    $sales = Sale::with(['customer', 'saleDetails.product'])->get();
-    $pdf = Pdf::loadView('Admin.venta.pdf', compact('sales'));
-    return $pdf->download('Reporte_Ventas.pdf');
-}
+    {
+        $sales = Sale::with(['customer', 'saleDetails.product'])->get();
+        $pdf = Pdf::loadView('Admin.venta.pdf', compact('sales'));
+        return $pdf->download('Reporte_Ventas.pdf');
+    }
 
 
     public function exportExcel()

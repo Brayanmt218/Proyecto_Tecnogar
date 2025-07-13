@@ -1,54 +1,46 @@
 <?php
-
 namespace App\Notifications;
-
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class LowStockNotification extends Notification
 {
     use Queueable;
+    protected $product;
 
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct()
+    public function __construct($product)
     {
-        //
+        $this->product = $product;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array<int, string>
-     */
-    public function via(object $notifiable): array
+    public function via($notifiable): array
     {
-        return ['mail'];
+        return ['database', 'mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject('Alerta de Stock Bajo 🚨')
+            ->line("El producto {$this->product->name} ha alcanzado un stock bajo de {$this->product->stock} (mínimo: {$this->product->stock_minimo}).")
+            ->action('Ver Producto', url('/admin/producto/' . $this->product->id))
+            ->line('Por favor, considera reabastecer el inventario. 📦');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
-    public function toArray(object $notifiable): array
+    public function toDatabase($notifiable): array
     {
         return [
-            //
+            'product_id' => $this->product->id,
+            'product_name' => $this->product->name,
+            'stock' => $this->product->stock,
+            'stock_minimo' => $this->product->stock_minimo,
+            'message' => "El producto {$this->product->name} ha alcanzado un stock bajo de {$this->product->stock} (mínimo: {$this->product->stock_minimo}).",
         ];
+    }
+
+    public function toArray($notifiable): array
+    {
+        return $this->toDatabase($notifiable);
     }
 }
