@@ -183,4 +183,10 @@ class ClienteController extends Controller
     {
     return Excel::download(new CustomersExport, 'Reporte_Clientes.xlsx');
     }
+    // Este método será usado solo por rutas API
+    public function apiIndex()
+    {
+        return response()->json(Customer::all());
+    }
+
 }

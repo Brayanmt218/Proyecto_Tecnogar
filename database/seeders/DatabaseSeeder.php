@@ -85,5 +85,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'ttitomariscalbrayan@gmail.com',
             'password' => bcrypt('123456789')
         ])->assignRole('Administrador');
+        User::factory()->create([
+            'name' => 'Alvaro Hualla Huaman',
+            'email' => 'huallahuamanalvaro@gmail.com',
+            'password' => bcrypt('987654321')
+        ])->assignRole('Secretario');
     }
 }
