@@ -9,7 +9,7 @@ class ExampleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_that_true_is_true(): void
+    public function test_eso_es_verdad_es_verdad(): void
     {
         $this->assertTrue(true);
     }
