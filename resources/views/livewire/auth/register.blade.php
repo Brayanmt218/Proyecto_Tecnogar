@@ -50,7 +50,9 @@ new #[Layout('components.layouts.auth')] class extends Component {
             required
             autofocus
             autocomplete="name"
+            data-cy="register-name-input"
             :placeholder="__('Full name')"
+
         />
 
         <!-- Email Address -->
